@@ -13,7 +13,7 @@ function lowerCaseSidebar() {
 
 function lowerCaseVideoTitles() {
     debug("+++++ lowerCaseVideoTitles()");
-    document.querySelectorAll("#video-title, .title.ytd-video-primary-info-renderer").forEach(function(value, index, listObj) {
+    document.querySelectorAll("#video-title, .title.ytd-video-primary-info-renderer, .ytp-title-link.yt-uix-sessionlink").forEach(function(value, index, listObj) {
         lowerCaseThis(value);
     });
 }
