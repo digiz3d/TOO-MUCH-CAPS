@@ -3,17 +3,9 @@ function debug(text) {
     return false;
 }
 
-
-function lowerCaseSidebar() {
-    debug("+++++ lowerCaseSidebar()");
-    document.querySelectorAll("#video-title").forEach(function(value, index, listObj) {
-        lowerCaseThis(value);
-    });
-}
-
 function lowerCaseVideoTitles() {
     debug("+++++ lowerCaseVideoTitles()");
-    document.querySelectorAll("#video-title, .title.ytd-video-primary-info-renderer, .ytp-title-link.yt-uix-sessionlink").forEach(function(value, index, listObj) {
+    document.querySelectorAll("#video-title, .title.ytd-video-primary-info-renderer, .ytp-title-link.yt-uix-sessionlink, .ytp-videowall-still-info-title, .ytp-upnext-title").forEach(function(value, index, listObj) {
         lowerCaseThis(value);
     });
 }
