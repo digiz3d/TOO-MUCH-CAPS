@@ -7,8 +7,8 @@
     },
     "manifest_version": 2,
     "name": "TOO MUCH CAPS",
-    "version": "1.2",
-    "description": "Makes youtube lowercase. Yes. Everything.",
+    "version": "1.3",
+    "description": "Makes YouTube video titles lowercase or Capitalized. Or UPPERCASE... It's your choice now.",
     "icons": {
         "48": "icons/toomuchcaps-48.png",
 		"96": "icons/toomuchcaps-96.png"
@@ -17,5 +17,9 @@
         "matches": ["*://*.youtube.com/*"],
         "js": ["toomuchcaps.js"],
         "run_at": "document_start"
-    }]
+    }],
+    "options_ui": {
+        "page": "options.html"
+    },
+    "permissions": ["storage"]
 }
