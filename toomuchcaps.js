@@ -1,24 +1,28 @@
 function injectCSS(item) {
-    var ytbTextTransformStyle = "lowercase";
-    if (item.ytbTextTransformStyle) {
-        ytbTextTransformStyle = item.ytbTextTransformStyle;
-    }
-    var head = document.head || document.getElementsByTagName('head')[0];
-    var css = '#video-title,\
-    .title.style-scope.ytd-video-primary-info-renderer,\
-    .ytp-title-link.yt-uix-sessionlink.ytp-title-fullerscreen-link,\
-    .miniplayer-title.style-scope.ytd-miniplayer { text-transform: ' + ytbTextTransformStyle + ' !important; }';
+    console.log("Injecting CSS with style:", item.ytbTextTransformStyle);
+    var ytbTextTransformStyle = item.ytbTextTransformStyle || "lowercase"; // Default to lowercase if undefined
+    var css = `
+        .style-scope.ytd-watch-metadata yt-formatted-string { 
+            text-transform: ${ytbTextTransformStyle} !important; 
+        }
+    `;
+    
     var style = document.createElement('style');
     style.type = 'text/css';
     style.appendChild(document.createTextNode(css));
-    head.appendChild(style);
-}
 
-window.addEventListener('load', function () {
-    var getting = browser.storage.sync.get("ytbTextTransformStyle");
-    getting.then(injectCSS, onError);
-}, true);
+    // Append style to document element to ensure it applies correctly
+    document.documentElement.appendChild(style);
+}
 
 function onError(error) {
-    console.log(`Error: ${error}`);
+    console.error(`Error in injecting CSS: ${error}`);
 }
+
+console.log("Content script loaded");
+
+// Ensure content script runs when document is ready
+document.addEventListener('DOMContentLoaded', function () {
+    var getting = browser.storage.sync.get("ytbTextTransformStyle");
+    getting.then(injectCSS, onError);
+});

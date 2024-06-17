@@ -7,7 +7,7 @@
     },
     "manifest_version": 2,
     "name": "TOO MUCH CAPS",
-    "version": "1.3",
+    "version": "1.4",
     "description": "Makes YouTube video titles lowercase or Capitalized. Or UPPERCASE... It's your choice now.",
     "icons": {
         "48": "icons/toomuchcaps-48.png",
@@ -19,7 +19,15 @@
         "run_at": "document_start"
     }],
     "options_ui": {
-        "page": "options.html"
+        "page": "options.html",
+        "browser_style": true
     },
-    "permissions": ["storage"]
+    "browser_action": {
+        "default_popup": "options.html",
+        "default_icon": {
+            "48": "icons/toomuchcaps-48.png",
+            "96": "icons/toomuchcaps-96.png"
+        }
+    },
+    "permissions": ["storage","activeTab"]
 }
