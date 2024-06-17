@@ -1,20 +1,25 @@
 {
     "applications": {
         "gecko": {
-            "id": "kekos91@free.fr",
+            "id": "toomuchcaps_digiz3d@users.noreply.github.com",
             "strict_min_version": "42.0"
         }
     },
     "manifest_version": 2,
     "name": "TOO MUCH CAPS",
-    "version": "1.0",
-    "description": "Make every youtube title non-caps, because we're pissed about youtubers writing onlyy with capslock cause they don't get any views without it.",
+    "version": "1.3",
+    "description": "Makes YouTube video titles lowercase or Capitalized. Or UPPERCASE... It's your choice now.",
     "icons": {
-        "48": "icons/toomuchcaps-48.png"
+        "48": "icons/toomuchcaps-48.png",
+		"96": "icons/toomuchcaps-96.png"
     },
     "content_scripts": [{
         "matches": ["*://*.youtube.com/*"],
         "js": ["toomuchcaps.js"],
         "run_at": "document_start"
-    }]
+    }],
+    "options_ui": {
+        "page": "options.html"
+    },
+    "permissions": ["storage"]
 }

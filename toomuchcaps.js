@@ -1,55 +1,24 @@
-function debug(text) {
-    //console.log(text);
-    return false;
+function injectCSS(item) {
+    var ytbTextTransformStyle = "lowercase";
+    if (item.ytbTextTransformStyle) {
+        ytbTextTransformStyle = item.ytbTextTransformStyle;
+    }
+    var head = document.head || document.getElementsByTagName('head')[0];
+    var css = '#video-title,\
+    .title.style-scope.ytd-video-primary-info-renderer,\
+    .ytp-title-link.yt-uix-sessionlink.ytp-title-fullerscreen-link,\
+    .miniplayer-title.style-scope.ytd-miniplayer { text-transform: ' + ytbTextTransformStyle + ' !important; }';
+    var style = document.createElement('style');
+    style.type = 'text/css';
+    style.appendChild(document.createTextNode(css));
+    head.appendChild(style);
 }
 
+window.addEventListener('load', function () {
+    var getting = browser.storage.sync.get("ytbTextTransformStyle");
+    getting.then(injectCSS, onError);
+}, true);
 
-function lowerCaseSidebar() {
-    debug("+++++ lowerCaseSidebar()");
-    document.querySelectorAll("#video-title").forEach(function(value, index, listObj) {
-        lowerCaseThis(value);
-    });
+function onError(error) {
+    console.log(`Error: ${error}`);
 }
-
-function lowerCaseVideoTitles() {
-    debug("+++++ lowerCaseVideoTitles()");
-    document.querySelectorAll("#video-title, .title.ytd-video-primary-info-renderer, .ytp-title-link.yt-uix-sessionlink").forEach(function(value, index, listObj) {
-        lowerCaseThis(value);
-    });
-}
-
-function lowerCaseThis(element) {
-    element.style.textTransform = "lowercase";
-}
-
-
-window.addEventListener("yt-page-data-updated", function() {
-    debug("yt-page-data-updated");
-    lowerCaseVideoTitles();
-});
-window.addEventListener("shown-items-changed", function() {
-    debug("shown-items-changed");
-});
-window.addEventListener('load', function() {
-    debug("load");
-    lowerCaseVideoTitles();
-}, true);
-
-window.addEventListener('yt-action', function() {
-    debug("yt-action");
-    lowerCaseVideoTitles();
-}, true);
-window.addEventListener('yt-load-next-continuation', function() {
-    debug("yt-load-next-continuation");
-    lowerCaseVideoTitles();
-}, true);
-window.addEventListener('yt-load-reload-continuation', function() {
-    debug("yt-load-reload-continuation");
-    lowerCaseVideoTitles();
-}, true);
-window.addEventListener('shown-items-changed', function() {
-    debug("shown-items-changed 2");
-    lowerCaseVideoTitles();
-}, true);
-
-debug("TOO MUCH CAPS loaded.");
