@@ -4,7 +4,10 @@ function injectCSS(item) {
     
     // Define CSS selectors and corresponding text-transform style
     var css = `
-        .style-scope.ytd-watch-metadata yt-formatted-string { 
+        .style-scope.ytd-watch-metadata yt-formatted-string, 
+        .style-scope.ytd-rich-grid-media yt-formatted-string,
+        .style-scope.ytd-compact-video-renderer span,
+        .style-scope.ytd-rich-grid-slim-media span { 
             text-transform: ${ytbTextTransformStyle} !important; 
         }
         h3 a yt-formatted-string,
