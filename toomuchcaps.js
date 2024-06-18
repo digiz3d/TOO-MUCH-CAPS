@@ -1,19 +1,18 @@
 function injectCSS(item) {
     var ytbTextTransformStyle = item.ytbTextTransformStyle || "lowercase"; // Default to lowercase if undefined
     var css = `
-        .style-scope.ytd-watch-metadata yt-formatted-string, 
-        .style-scope.ytd-rich-grid-media yt-formatted-string,
-        .style-scope.ytd-compact-video-renderer span,
-        .style-scope.ytd-rich-grid-slim-media span,
-        .title.style-scope.ytd-video-primary-info-renderer,
+        yt-formatted-string.style-scope.ytd-watch-metadata,
+        yt-formatted-string.style-scope.ytd-rich-grid-media,
+        span.style-scope.ytd-compact-video-renderer,
+        span.style-scope.ytd-rich-grid-slim-media,
+        span.style-scope.ytd-reel-item-renderer, 
         .ytp-title-link.yt-uix-sessionlink.ytp-title-fullerscreen-link,
-        .miniplayer-title.style-scope.ytd-miniplayer { 
+        .miniplayer-title.style-scope.ytd-miniplayer{ 
             text-transform: ${ytbTextTransformStyle} !important; 
         }
     `;
-    
+
     var style = document.createElement('style');
-    style.type = 'text/css';
     style.appendChild(document.createTextNode(css));
 
     // Append style to document element to ensure it applies correctly
