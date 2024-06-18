@@ -19,8 +19,7 @@
         "run_at": "document_start"
     }],
     "options_ui": {
-        "page": "options.html",
-        "browser_style": true
+        "page": "options.html"
     },
     "browser_action": {
         "default_popup": "options.html",
