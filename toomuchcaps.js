@@ -5,7 +5,10 @@ function injectCSS(item) {
         .style-scope.ytd-watch-metadata yt-formatted-string, 
         .style-scope.ytd-rich-grid-media yt-formatted-string,
         .style-scope.ytd-compact-video-renderer span,
-        .style-scope.ytd-rich-grid-slim-media span { 
+        .style-scope.ytd-rich-grid-slim-media span,
+        .title.style-scope.ytd-video-primary-info-renderer,
+        .ytp-title-link.yt-uix-sessionlink.ytp-title-fullerscreen-link,
+        .miniplayer-title.style-scope.ytd-miniplayer { 
             text-transform: ${ytbTextTransformStyle} !important; 
         }
     `;
